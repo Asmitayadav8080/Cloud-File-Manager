@@ -1,0 +1,22 @@
+
+services:
+  app:
+    build: .
+    container_name: cloud-file-manager
+    restart: unless-stopped
+
+    ports:
+      - "8007:8007"
+
+    environment:
+      SERVER_PORT: 8007
+
+      DB_URL: jdbc:mysql://${DB_HOST}:3306/cloud_file_manager
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      AWS_REGION: ${AWS_REGION}
+      AWS_S3_BUCKET_NAME: ${AWS_S3_BUCKET_NAME}
+
+      ADMIN_FULL_NAME: ${ADMIN_FULL_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
